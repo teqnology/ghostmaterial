@@ -2,7 +2,7 @@
 
 The new material theme for [Ghost](http://github.com/tryghost/ghost/) based on [Materialize](http://materializecss.com/).
 
-Currently there is no demo to preview (but I'll have it shortly).
+[Demo](http://damp-ridge-9834.herokuapp.com/)
 
 ## Copyright & License
 
