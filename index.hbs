@@ -1,0 +1,19 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col s12">
+            {{#if @blog.logo}}
+                <img src="{{@blog.logo}}" alt="{{@blog.title}} logo" />
+            {{/if}}
+            <h2 class="cyan-text">{{@blog.description}}</h2>
+        </div>
+    </div>
+
+</div>
+
+
+{{! The tag below includes the post loop - partials/loop.hbs }}
+{{> "loop"}}

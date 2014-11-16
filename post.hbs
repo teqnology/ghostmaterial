@@ -1,0 +1,60 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! Everything inside the #post tags pulls data from the post }}
+{{#post}}
+
+<section id="what" class="content" role="main" style="padding-top:150px;">
+    <div class="wrapper">
+        <div class="row">
+            <div class="columns large-12">
+                
+                <header><h2 class="title"><a class="link" href="{{url}}">{{{title}}}</a></h2></header>
+                
+                <h3><time datetime="{{date format='YYYY-MM-DD'}}">published {{date format="MMMM DD, YYYY"}}</time></h3>
+                <h3>by {{author.name}}</h3>
+
+                <section class="post-content">
+                    {{content}}
+                </section>
+
+                {{! Everything inside the #author tags pulls data from the author }}
+                {{#author}}
+
+                <footer class="post-footer box">
+                    {{#if image}}
+                        <img class="author-thumb" src="{{image}}" alt="Author image" nopin="nopin" />
+                    {{/if}}
+                    <div class="author-info">
+                    Published by <a class="link" href="{{url}}">{{name}}</a> 
+                    </div>
+                    
+                </footer>
+
+                {{/author}}
+
+                <section class="share">
+                    <h4>Share this post</h4>
+                    <a class="link" href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}"
+                        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fi-social-twitter large"></i>
+                    </a>
+                    <a class="link" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fi-social-facebook large"></i>
+                    </a>
+                    <a class="link" href="https://plus.google.com/share?url={{url absolute="true"}}"
+                       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="fi-social-google-plus large"></i>
+                    </a>
+                </section>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{{/post}}

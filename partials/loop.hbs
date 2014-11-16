@@ -1,0 +1,63 @@
+{{! This is the post loop - each post will be output using this markup }}
+{{#foreach posts}}
+
+<div class="row">
+
+    <div class="col s12">
+
+        {{#if image}}
+        <div class="card">
+            <div class="card-content">
+                <img src="{{image}}" alt="post image" nopin="nopin" />
+        {{else}}
+        <div class="card cyan">
+            <div class="card-content">                
+        {{/if}}
+                <h1 class="cyan-text"><a class="link" href="{{url}}">{{{title}}}</a></h1>
+            </div>  
+            <div class="card-footer">
+                <section class="post-excerpt">
+                    <p class="flow-text">{{excerpt words="100"}} <a class="read-more link" href="{{url}}"><i class="mdi-navigation-chevron-right cyan-text"></i></a></p>
+                </section>
+                <p class="cyan-text">{{author.name}}</p>
+                <p class="cyan-text"><time datetime="{{date format='YYYY-MM-DD'}}">Published on {{date format="MMMM DD, YYYY"}}</time></p>
+                <a class='card-action' href='{{author.url}}'>Author's page</a>
+            </div>
+        </div>
+
+        {{! Everything inside the #author tags pulls data from the author }}
+        {{#author}}
+
+        <div class="col s12 m6">
+            {{#if image}}
+            <div class="card">
+                <div class="card-content">
+                    <img class="author-thumb" src="{{image}}" alt="Author image" nopin="nopin" />
+            {{else}}
+                <div class="card cyan">
+                    <div class="card-content">                
+            {{/if}}
+                <h1 class="cyan-text">{{name}}</h1>
+                <p class="cyan-text">{{bio}}</p>
+                </div>  
+                <div class="card-footer cyan-text">
+                    <p><time datetime="{{date format='YYYY-MM-DD'}}">Published on {{date format="MMMM DD, YYYY"}}</time></p>
+                    <a class='card-action cyan-text' href='{{url}}'>Author's page</a>
+                </div>
+            </div>
+        </div>
+
+        {{/author}}
+
+    </div>
+
+</div>
+
+{{/foreach}}
+
+<div class="row">
+    <div class="col s12">
+        {{! Previous/next page links - displayed on every page }}
+        {{pagination}}
+    </div>
+</div>
